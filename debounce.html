@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Debounce</title>
+</head>
+
+<body>
+
+  <h2>Debounce Method</h2>
+
+  <input type="text" id="searchVal" placeholder="search Item" onkeyup="betterfunction()" />
+
+  <input type="text" id="myInput" placeholder="Type something..." />
+
+
+</body>
+
+<script>
+
+  let counterItem = 0;
+  let timer;
+  const getData = () => {
+    console.log('debounce fetching', counterItem++)
+  }
+
+  const betterfunction = () => {
+    clearTimeout(timer);
+    timer = setTimeout(getData, 500);
+  }
+
+
+  // Debounce interval in milliseconds
+  const debounceInterval = 500;
+  let debounceTimeout;
+
+  const handleInput = () => {
+    // Perform your desired action here, such as fetching search results
+    console.log("Input changed:", document.getElementById("myInput").value);
+  };
+
+  document.getElementById("myInput").addEventListener("keyup", () => {
+    // Clear any existing debounce timeout
+    clearTimeout(debounceTimeout);
+
+    // Set a new debounce timeout
+    debounceTimeout = setTimeout(handleInput, debounceInterval);
+  });
+</script>
+
+</html>

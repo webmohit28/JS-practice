@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+  <h3 class="section-title"> Counter: 2</h3>
+  <div>
+    <button type="button" class="btn" id="add-item">+</button>
+    <button type="button" class="btn remove-item">-</button>
+  </div>
+
+  <div>
+    increament/decrememnt by
+    <input type="number" min="1" name="" id="incdecval" value="1">
+  </div>
+
+  <button type="button" class="btn reset-btn" id="reset-item" onclick="reset()">Reset</button>
+
+</body>
+
+<script>
+  let counter = 0;
+  const countselect = document.querySelector('.section-title');
+  const incdecval = document.getElementById("incdecval");
+  const increamentBnt = document.querySelector('#add-item');
+  const decreamentBtn = document.querySelector('.remove-item');
+
+  increamentBnt.addEventListener('click', () => {
+    counter = counter + Number(incdecval.value);
+    countselect.innerText = counter;
+  })
+
+  decreamentBtn.addEventListener('click', () => {
+    if (counter > 0) {
+      counter = counter - incdecval.value;
+      countselect.innerText = counter;
+    }
+  })
+
+  const reset = () => {
+    counter = 0;
+    countselect.innerText = counter;
+  }
+
+  countselect.innerText = counter;
+
+  const cart = [
+    { name: 'burger', price: 200 },
+    { name: 'pizza', price: 350 },
+    { name: 'burger', price: 200 },
+    { name: 'ice cream', price: 300 },
+  ]
+</script>
+
+</html>

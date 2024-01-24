@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Guess The Number</title>
+  <style>
+    .comn {
+      text-align: center;
+    }
+
+    input {
+      width: 150px;
+    }
+
+    button {
+      background: #2f9080;
+      box-shadow: none;
+      border: 0;
+      color: #fff;
+      padding: 7px 15px;
+      margin-top: 15px;
+      cursor: pointer;
+    }
+
+    button:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+  </style>
+</head>
+
+<body>
+  <h1 style="text-align: center;">Guess The Number</h1>
+  <form action="" class="comn">
+    <div>
+      <label for="numval">Enter a number b/n 1 to 50</label>
+      <input type="number" name="numval" id="numval" placeholder="Enter a number" min="0" max="100" required>
+    </div>
+    <div>
+      <button type="submit" class="submit">Submit</button>
+      <button type="button" disabled class="start-again">Start Game</button>
+    </div>
+    <div class="message"></div>
+    <p class="all-guess"></p>
+  </form>
+
+  <script>
+    ; (function () {
+      const inputValue = document.querySelector('#numval');
+      const form = document.querySelector('form');
+      const message = document.querySelector('.message');
+      const allGuesses = document.querySelector('.all-guess');
+      const startAgain = document.querySelector('.start-again');
+      const startBtn = document.querySelector('.submit');
+
+      let randomNumber = Math.round(Math.random() * 50);
+      let allGuessesVal = [];
+
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+
+        const userInputVal = parseInt(inputValue.value);
+
+        if (randomNumber > userInputVal) {
+          message.innerHTML = '<h2>Too Low</h2>';
+        }
+        else if (randomNumber < userInputVal) {
+          message.innerHTML = '<h2>Too High</h2>';
+        }
+        else {
+          message.innerHTML = '<h2>Congratulation you acheived</h2>';
+          startAgain.disabled = false;
+        }
+        allGuessesVal.push(userInputVal);
+        allGuesses.innerText = ` your guess ${allGuessesVal.join(', ')}`;
+        form.reset();
+
+      })
+
+      startAgain.addEventListener('click', () => {
+        startBtn.disabled = true;
+        allGuesses.innerText = '';
+        message.innerHTML = '';
+        startBtn.disabled = false;
+        allGuessesVal = [];
+        randomNumber = Math.round(Math.random() * 50);
+        startAgain.disabled = true;
+      })
+    }());
+  </script>
+</body>
+
+</html>

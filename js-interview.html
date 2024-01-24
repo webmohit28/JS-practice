@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  JS Interview question
+</body>
+<script>
+  //Problem -1
+  const items = ['a', 'b', 'c', 'd', 'e', 'a', 'b', 'a', 'c', 'm'];
+  //output = {a:3, b:2, c:2, d:1,e:1} output['a'] = 3
+  output = {};
+
+  const getduplicateItems = (arr) => {
+    const newitems = arr.map((val, index) =>
+      output[val] = (output[val] || 0) + 1
+      //arr.indexOf(val) !== index
+    )
+    return output;
+  }
+
+  console.log(getduplicateItems(items));
+
+  //another way
+
+  const counter = {};
+  for (const item of items) {
+    if (counter[item]) {
+      counter[item] += 1;
+    }
+    else {
+      counter[item] = 1;
+    }
+  }
+  console.log(counter);
+
+
+  //Problem-2 (reverse the string)
+
+  const title = 'I love javascript';
+
+  const reverseString = (str) => {
+    //debugger;
+    const splitstr = str.split(' ');  //['i', 'love', 'javascript'];
+    const finalstr = splitstr.map((item) => item.split('').reverse().join(''))
+    const newstr = finalstr.join(' ');
+    return newstr;
+  }
+
+  console.log(reverseString(title))
+
+  //Problem-3 (sort the string on length basic)
+  const title2 = 'react is a javascript library';   // a is react library javascript
+
+  const sortStrbylenght = (str) => {
+
+    const breakstr = str.split(' ');
+    const newstr = breakstr.sort((a, b) => a.length - b.length); //ASC
+    return newstr.join(' ');
+
+  }
+
+  console.log(sortStrbylenght(title2));
+
+
+</script>
+
+</html>

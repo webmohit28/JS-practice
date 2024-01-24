@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Closure</title>
+
+</head>
+
+<body>
+
+  <h2>Closure</h2>
+
+</body>
+
+<script>
+
+
+  let a = 10;
+  function sum() {
+    return function (b) {
+      return function (c) {
+        return a * b * c;
+      }
+    }
+  }
+
+  console.log(sum()(3)(4))
+  var show = 'come from test';
+  function find() {
+
+    let item = [];
+    for (var i = 0; i < 10000; i++) {
+      item[i] = i * i;
+    }
+    console.log(item);
+
+    return function (index) {
+      console.log(item[index] + ' value of ' + index)
+    }
+  }
+
+  console.log(show)
+
+  find()(20);
+
+
+
+
+</script>
+
+</html>

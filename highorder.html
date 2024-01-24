@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>High Order</title>
+
+</head>
+
+<body>
+  <div id="test">tedsh</div>
+</body>
+<script>
+  const users = [
+    { id: 1, name: 'mohit', isActive: true, age: 28 },
+    { id: 2, name: 'vjay', isActive: false, age: 38 },
+    { id: 3, name: 'mohit', isActive: true, age: 32 },
+    { id: 4, name: 'ganga', isActive: false, age: 30 },
+  ]
+
+  //level 1
+  const namevalue = [];
+  // for (let i = 0; i < users.length; i++) {
+  //   if (users[i].isActive) {
+  //     namevalue.push(users[i].name);
+  //   }
+  // }
+
+  //level 2
+  users.forEach((user, index) => { namevalue.push(user.name, index); });
+
+  //level 3
+  const newARR = users.filter((user) => !user.isActive).map((user) => user.name);
+  console.log(newARR);
+
+
+
+  const result = users.find((user) => user.name === 'mohit');
+  console.log(result);
+
+
+
+  // document.getElementById('test').innerHTML = namevalue.sort((a, b) => b.localeCompare(a));
+
+
+
+</script>
+
+</html>
