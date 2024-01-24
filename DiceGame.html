@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dice Game</title>
+  <style>
+    section {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .block {
+      background: #333;
+      color: #ff6b6b;
+      padding: 36px;
+      border-radius: 10px;
+      text-align: center;
+
+    }
+
+    h2 {
+      margin: 0;
+      font-size: 36px;
+    }
+
+    .dice-container {
+      display: flex;
+      gap: 24px;
+      justify-content: space-between;
+      margin-bottom: 32px;
+    }
+
+    .dice-val {
+      text-align: center;
+      background: #eee;
+      padding: 8px;
+    }
+
+    button {
+      background: #ff6b6b;
+      box-shadow: none;
+      border: 0;
+      color: #000;
+      padding: 7px 24px;
+      margin-top: 16px;
+      cursor: pointer;
+      border-radius: 5px;
+      font-size: 18px;
+    }
+  </style>
+</head>
+
+<body>
+  <h1 style="text-align: center;">Dice Game </h1>
+  <section>
+    <div class="block">
+      <h2 class="matchUpdate">player 2 win</h2>
+      <div class="dice-container">
+        <div class="dice-item dice-item-1">
+          <h4>Player 1</h4>
+          <div class="dice-va dice-val-1">2</div>
+        </div>
+        <div class="dice-item dice-item-2">
+          <h4>Player 2</h4>
+          <div class="dice-val dice-val-2">4</div>
+        </div>
+      </div>
+      <button type="button" class="playBtn" onclick="updateScore()">Play</button>
+    </div>
+
+  </section>
+
+  <script>
+    const playBtn = document.querySelector('.playBtn');
+    const diceVal1 = document.querySelector('.dice-val-1');
+    const diceVal2 = document.querySelector('.dice-val-2');
+    const matchUpdate = document.querySelector('.matchUpdate');
+
+    function updateScore() {
+
+      const playerval1 = Math.floor(Math.random() * 6) + 1
+      const playerval2 = Math.floor(Math.random() * 6) + 1
+      diceVal1.innerText = playerval1;
+      diceVal2.innerText = playerval2;
+
+      if (playerval1 < playerval2) {
+        matchUpdate.innerHTML = 'Player 2 Win';
+      }
+      else if (playerval1 > playerval2) {
+        matchUpdate.innerHTML = 'Player 1 Win';
+      }
+      else {
+        matchUpdate.innerHTML = 'Match Draw';
+      }
+    }
+    updateScore();
+  </script>
+</body>
+
+</html>
